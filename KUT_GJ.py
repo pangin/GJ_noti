@@ -43,68 +43,12 @@ def start(bot, update):
 
 
 #사용자 정의 함수
-def search_db(): #DB 대조
-    global updated_numbers
-    global post_numbers
-    global job_finished
-    global db
-    global counter
-    global counter_2
-    updated_numbers = [] #updated_numbers 리스트를 비어있는 상태로 초기화
-    counter = 0 #counter 0으로 초기화
-    counter_2 = 0 #counter_2 0으로 초기화
-    print("\n[INFO] DB 조회, 갱신 및 신규 게시글 전송 작업 시작.\n")
-    read_db()
-    print("\n" + str(db_list) + "\n") #for debug
-    while not job_finished:
-        if counter == 19:
-            job_finished = True
-        elif post_numbers[counter] in db_list:
-            print("\n[INFO] 글 번호 " + post_numbers[counter] + "는 이미 DB에 있습니다.")
-            counter += 1
-        else:
-            print("\n[INFO] 글 번호 " + post_numbers[counter] + "는 DB에 없습니다. DB에 기록하고 BOT이 전송합니다.\n")
-            updated_numbers.insert(counter_2, post_numbers[counter])
-            write_db()
-            send_news()
-            counter += 1
-            counter_2 += 1
-    del updated_numbers[:] #updated_numbers 초기화
-    del db_list[:] #db_list 초기화
-    job_finished = False
-    counter = 0 #counter 0으로 초기화
-    counter_2 = 0 #counter_2 0으로 초기화
 
-def write_db(): #DB 텍스트 파일 저장 작업 함수
-    db = open('db.txt', 'a')
-    db.write(updated_numbers[counter_2] + "\n")
-    db.close()
 
 def send_news(): #업데이트된 게시글 봇으로 전송하는 함수
     global posts
     # telegram_bot.send_message(chat_id = telegram_chat_id, text = "새로운 근로장학생 모집 공고가 올라왔습니다!\n\n" + str(posts[counter_2]) + "\n" + notice_URL + updated_numbers[counter_2])
     telegram_bot.send_message(chat_id = telegram_chat_id_0, text = "새로운 근로장학생 모집 공고가 올라왔습니다!\n\n" + str(posts[counter_2]) + "\n" + notice_URL + updated_numbers[counter_2])
-
-def read_db():
-    global db_list
-    global counter_1
-    global counter_3
-    global job_finished
-    db = open('db.txt', 'r')
-    db_list = db.readlines()
-    counter_1 = len(db_list)
-    while not job_finished:
-        if counter_3 == counter_1:
-            job_finished = True
-        else:
-            post_number = db_list[counter_3]
-            post_number = post_number.replace("\n", "")
-            db_list[counter_3] = post_number
-            counter_3 += 1
-    job_finished = False
-    counter_1 = 0
-    counter_3 = 0
-    db.close()
 
 def parse_post_list():
     global counter
@@ -140,59 +84,6 @@ def parse_post_list():
     job_finished = False
 
     #print(posts)
-
-def parse_num_list():
-    global soup
-    global counter
-    global job_finished
-    global post_numbers
-    global post_number
-    post_numbers = soup.find_all("td", class_="bc-s-post_seq")
-    numbers_count = len(post_numbers)
-    print("\n[INFO] 게시글 번호 파싱 작업 시작.\n")
-    while not job_finished:
-        print("\n[INFO] " + str(counter + 1) + "번째 프로세스")
-        post_number = str(post_numbers[counter])
-        print("\n[INFO] 추출 전: " + str(post_number))
-        post_number = post_number.replace("<td class=\"bc-s-post_seq\">", "")
-        post_number = post_number.replace("\n                    ", "")
-        post_number = post_number.replace("        </td>", "")
-        post_number = post_number.replace("\r", "")
-        print("\n[INFO] 추출 후: " + str(post_number) + "\n")
-        post_numbers[counter] = post_number
-        if counter == (numbers_count - 1):
-            print("\n[INFO] 게시글 번호 파싱 작업 완료.\n")
-            job_finished = True
-        else:
-            counter += 1
-    counter = 0
-    job_finished = False
-
-def parse_title_list():
-    global job_finished
-    global post_title
-    global counter
-    global posts
-    global posts_count
-    print("\n[INFO] 게시글 제목 파싱 작업 시작\n")
-    posts_count = len(posts)
-    while not job_finished:
-        print("\n[INFO] " + str(counter + 1) + "번째 프로세스")
-        post_title = str(posts[counter])
-        print("\n[INFO] 파싱 전 " + str(posts[counter]))
-        post_title = post_title.replace("<span style=\"\" title=\"", "")
-        post_title = post_title.replace("\">", "")
-        post_title = post_title.replace("</span>", "")
-        post_title = post_title[int(len(post_title) / 2):]
-        print("\n[INFO] 파싱 후: " + str(post_title) + "\n")
-        posts[counter] = post_title
-        if counter == (posts_count - 1):
-            print("\n[INFO] 게시글 제목 파싱 작업 완료.\n")
-            job_finished = True
-        else:
-            counter += 1
-    job_finished = False
-
 
 #while prog_stat:
 def run():
