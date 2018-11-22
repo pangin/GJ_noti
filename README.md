@@ -1,1 +1,1 @@
-# KoreaTech-GJ_noty-Ver.Telegram
+# KoreaTech-GJ_noti-Ver.Telegram
