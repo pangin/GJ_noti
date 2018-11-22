@@ -9,5 +9,5 @@
 ✅ Done!
 ⛔️ Canceled
 > ▶️ Refactoring... (almost Done!)
-> ⏹ Telegram Messenger command handler
-> ⏹ For another College
+⏹ Telegram Messenger command handler
+⏹ For another College
