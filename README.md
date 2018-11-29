@@ -10,7 +10,7 @@
 ⛔️ Canceled  
 > ▶️ Refactoring... _(almost Done!)_  
 > ⏹ Telegram Messenger command handler  
-> ⏹ For another College  
+> ⏹ Support for another College in Korea, Republic of.
 
 ## FAQ
 > ...
