@@ -11,3 +11,6 @@
 > ▶️ Refactoring... _(almost Done!)_  
 > ⏹ Telegram Messenger command handler  
 > ⏹ For another College  
+
+## F&Q
+> ...
