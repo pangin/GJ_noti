@@ -12,5 +12,5 @@
 > ⏹ Telegram Messenger command handler  
 > ⏹ For another College  
 
-## F&Q
+## FAQ
 > ...
