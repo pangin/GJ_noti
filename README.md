@@ -1,4 +1,4 @@
-# GJ_noti 근로장학생 알리미&커뮤니티
+# GJ noti server - 근로장학생 알리미&커뮤니티 서버
 
 ## Installation
 > ...
