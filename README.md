@@ -1,4 +1,4 @@
-# KoreaTech-GJ_noti-Ver.Telegram
+# GJ_noti 근로장학생 알리미&커뮤니티
 
 ## Installation
 > ...
