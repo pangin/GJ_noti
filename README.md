@@ -1,4 +1,4 @@
-# GJ noti server - 근로장학생 알리미
+# GJnoti Crawl Server - 근로장학생 알리미 크롤러
 
 ## Installation
 > ...
